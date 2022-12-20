@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Pawnshop.DB;
 
 namespace Pawnshop.Pages
 {
@@ -20,9 +21,34 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ContractsListPage : Page
     {
+        public List<object> Contracts { get; set; }
+
         public ContractsListPage()
         {
             InitializeComponent();
+
+            Contracts = DataAccess.GetContracts();
+
+            DataContext = this;
+        }
+
+        private void btnNewContract_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ContractPage(new object(), true));
+        }
+
+        private void lvContracts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var contract = lvContracts.SelectedItem as object;
+            if (contract != null)
+                NavigationService.Navigate(new ContractPage(contract));
+
+            lvContracts.SelectedIndex = -1;
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }

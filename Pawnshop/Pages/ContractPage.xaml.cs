@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Pawnshop.DB;
 
 namespace Pawnshop.Pages
 {
@@ -20,9 +21,20 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ContractPage : Page
     {
-        public ContractPage()
+        public object Contract { get; set; }
+
+        public ContractPage(object contract, bool isNew = false)
         {
             InitializeComponent();
+
+            Contract = contract;
+
+            if (isNew)
+                Title = $"Новый {Title}";
+            else
+                Title = $"{Title} {Contract.ToString()}";
+
+            DataContext = this;
         }
     }
 }

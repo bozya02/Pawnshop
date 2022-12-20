@@ -22,11 +22,14 @@ namespace Pawnshop.Pages
     public partial class ClientsListPage : Page
     {
         public List<object> Clients { get; set; }
+
         public ClientsListPage()
         {
             InitializeComponent();
 
             Clients = DataAccess.GetClients();
+
+            DataContext = this;
         }
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
