@@ -21,9 +21,9 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ClientPage : Page
     {
-        public object Client { get; set; }
+        public Client Client { get; set; }
 
-        public ClientPage(object client, bool isNew = false)
+        public ClientPage(Client client, bool isNew = false)
         {
             InitializeComponent();
 

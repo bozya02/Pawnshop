@@ -21,7 +21,7 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ClientsListPage : Page
     {
-        public List<object> Clients { get; set; }
+        public List<Client> Clients { get; set; }
 
         public ClientsListPage()
         {
@@ -39,12 +39,12 @@ namespace Pawnshop.Pages
 
         private void btnNewClient_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ClientPage(new object(), true));
+            NavigationService.Navigate(new ClientPage(new Client(), true));
         }
 
         private void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var client = lvClients.SelectedItem as object;
+            var client = lvClients.SelectedItem as Client;
             if (client != null)
                 NavigationService.Navigate(new ClientPage(client));
 

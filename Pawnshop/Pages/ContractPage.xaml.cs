@@ -21,9 +21,9 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ContractPage : Page
     {
-        public object Contract { get; set; }
+        public Contract Contract { get; set; }
 
-        public ContractPage(object contract, bool isNew = false)
+        public ContractPage(Contract contract, bool isNew = false)
         {
             InitializeComponent();
 

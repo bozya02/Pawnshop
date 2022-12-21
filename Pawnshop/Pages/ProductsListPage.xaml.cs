@@ -22,7 +22,7 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ProductsListPage : Page
     {
-        public List<object> Products { get; set; }
+        public List<Product> Products { get; set; }
 
         public ProductsListPage()
         {
@@ -35,7 +35,7 @@ namespace Pawnshop.Pages
 
         private void lvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var product = lvProducts.SelectedItem as object;
+            var product = lvProducts.SelectedItem as Product;
             if (product != null)
                 NavigationService.Navigate(new ProductPage(product));
 

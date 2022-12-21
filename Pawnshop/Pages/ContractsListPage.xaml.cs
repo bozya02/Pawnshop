@@ -21,7 +21,7 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ContractsListPage : Page
     {
-        public List<object> Contracts { get; set; }
+        public List<Contract> Contracts { get; set; }
 
         public ContractsListPage()
         {
@@ -34,7 +34,7 @@ namespace Pawnshop.Pages
 
         private void btnNewContract_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ContractPage(new object(), true));
+            NavigationService.Navigate(new ContractPage(new Contract(), true));
         }
 
         private void lvContracts_SelectionChanged(object sender, SelectionChangedEventArgs e)

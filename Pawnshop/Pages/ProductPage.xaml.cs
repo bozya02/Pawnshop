@@ -21,9 +21,9 @@ namespace Pawnshop.Pages
     /// </summary>
     public partial class ProductPage : Page
     {
-        public object Product { get; set; }
+        public Product Product { get; set; }
 
-        public ProductPage(object product, bool isNew = false)
+        public ProductPage(Product product, bool isNew = false)
         {
             InitializeComponent();
 
