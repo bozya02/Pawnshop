@@ -1,5 +1,4 @@
-﻿using Pawnshop.DB;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,8 +28,16 @@ namespace Pawnshop.Pages
             InitializeComponent();
 
             Products = DataAccess.GetProducts();
+            DataAccess.NewItemAddedEvent += DataAccess_NewItemAddedEvent;
 
             DataContext = this;
+        }
+
+        private void DataAccess_NewItemAddedEvent()
+        {
+            Products = DataAccess.GetProducts();
+            lvProducts.ItemsSource = Products;
+            lvProducts.Items.Refresh();
         }
 
         private void lvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -24,6 +24,7 @@ namespace Pawnshop.DB
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<decimal> Price { get; set; }
+        public bool IsSold { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContractProduct> ContractProducts { get; set; }

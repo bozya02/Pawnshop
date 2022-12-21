@@ -10,6 +10,37 @@
       Title="Клиент">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         
+        <TextBox Text="{Binding LastName}" 
+                 materialDesign:HintAssist.Hint="Фамилия"/>
+        <TextBox Text="{Binding FirstName}" Grid.Row="1"
+                 materialDesign:HintAssist.Hint="Имя"/>
+        <TextBox Text="{Binding Patronymic}" Grid.Row="2"
+                 materialDesign:HintAssist.Hint="Отчество"/>
+        <TextBox Text="{Binding Passport}" Grid.Row="3"
+                 materialDesign:HintAssist.Hint="Паспорт"/>
+        <TextBox Text="{Binding Phone}" Grid.Row="4"
+                 materialDesign:HintAssist.Hint="Телефон"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
+            <Button x:Name="btnSave" Content="Сохранить"
+                    MinWidth="200" MinHeight="40"    
+                    FontSize="20" Grid.Row="1"
+                    Click="btnSave_Click"/>
+
+            <Button x:Name="btnDelete" Content="Удалить"
+                    MinWidth="200" MinHeight="40"
+                    FontSize="20" Style="{StaticResource btnSecondary}"
+                    Grid.Row="1" Grid.Column="1"
+                    Click="btnDelete_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

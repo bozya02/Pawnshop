@@ -28,8 +28,16 @@ namespace Pawnshop.Pages
             InitializeComponent();
 
             Clients = DataAccess.GetClients();
+            DataAccess.NewItemAddedEvent += DataAccess_NewItemAddedEvent;
 
             DataContext = this;
+        }
+
+        private void DataAccess_NewItemAddedEvent()
+        {
+            Clients = DataAccess.GetClients();
+            lvClients.ItemsSource = Clients;
+            lvClients.Items.Refresh();
         }
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)

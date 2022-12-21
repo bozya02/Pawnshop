@@ -78,16 +78,37 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\Client.cs">
+      <DependentUpon>PawnshopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Contract.cs">
+      <DependentUpon>PawnshopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\ContractProduct.cs">
+      <DependentUpon>PawnshopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\DataAccess.cs" />
+    <Compile Include="DB\PawnshopEntities.cs" />
     <Compile Include="DB\PawnshopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PawnshopModel.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\PawnshopModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PawnshopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\PawnshopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PawnshopModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Product.cs">
+      <DependentUpon>PawnshopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\sysdiagram.cs">
+      <DependentUpon>PawnshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
@@ -177,6 +198,12 @@
     <Content Include="DB\PawnshopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PawnshopModel.Context.cs</LastGenOutput>
+      <DependentUpon>PawnshopModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DB\PawnshopModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PawnshopModel.edmx</DependentUpon>
+      <LastGenOutput>PawnshopModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

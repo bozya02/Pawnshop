@@ -14,6 +14,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
           <Property Name="Passport" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
@@ -39,6 +40,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="60" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsSold" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -138,6 +140,7 @@
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Passport" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Contracts" Relationship="PawnshopModel.FK_Contract_Client" FromRole="Client" ToRole="Contract" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
@@ -168,6 +171,7 @@
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="ContractProducts" Relationship="PawnshopModel.FK_ContractProduct_Product" FromRole="Product" ToRole="ContractProduct" />
+          <Property Name="IsSold" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -224,6 +228,7 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="PawnshopModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Passport" ColumnName="Passport" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -253,6 +258,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="PawnshopModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsSold" ColumnName="IsSold" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

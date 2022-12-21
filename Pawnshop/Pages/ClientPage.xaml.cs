@@ -34,7 +34,50 @@ namespace Pawnshop.Pages
             else
                 Title = $"{Title} {Client.ToString()}";
 
-            DataContext = this;
+            DataContext = Client;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show("", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                    DataAccess.DeleteClient(Client);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так!");
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(Client.LastName))
+                stringBuilder.AppendLine("Фамилия обязательна для заполнения!");
+            if (string.IsNullOrWhiteSpace(Client.LastName))
+                stringBuilder.AppendLine("Имя обязательно для заполнения!");
+            if (string.IsNullOrWhiteSpace(Client.LastName))
+                stringBuilder.AppendLine("Паспорт обязателен для заполнения!");
+            if (string.IsNullOrWhiteSpace(Client.LastName))
+                stringBuilder.AppendLine("Телефон обязателен для заполнения!");
+
+            if (stringBuilder.Length > 0)
+            {
+                MessageBox.Show(stringBuilder.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            try
+            {
+                DataAccess.SaveClient(Client);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так!");
+            }
         }
     }
 }

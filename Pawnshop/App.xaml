@@ -43,6 +43,7 @@
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="FontSize" Value="30"/>
                 <Setter Property="MaxWidth" Value="400"/>
+                <Setter Property="Margin" Value="0 5"/>
             </Style>
 
             <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">

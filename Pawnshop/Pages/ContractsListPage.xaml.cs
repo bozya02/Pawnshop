@@ -28,8 +28,16 @@ namespace Pawnshop.Pages
             InitializeComponent();
 
             Contracts = DataAccess.GetContracts();
+            DataAccess.NewItemAddedEvent += DataAccess_NewItemAddedEvent;
 
             DataContext = this;
+        }
+
+        private void DataAccess_NewItemAddedEvent()
+        {
+            Contracts = DataAccess.GetContracts();
+            lvContracts.ItemsSource = Contracts;
+            lvContracts.Items.Refresh();
         }
 
         private void btnNewContract_Click(object sender, RoutedEventArgs e)
@@ -39,7 +47,7 @@ namespace Pawnshop.Pages
 
         private void lvContracts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var contract = lvContracts.SelectedItem as object;
+            var contract = lvContracts.SelectedItem as Contract;
             if (contract != null)
                 NavigationService.Navigate(new ContractPage(contract));
 
