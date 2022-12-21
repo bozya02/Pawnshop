@@ -18,10 +18,25 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnContracts" Content="Договоры" Margin="5" Click="btnContracts_Click"/>
+                <Button x:Name="btnClients" Content="Клиенты" Margin="5" Click="btnClients_Click"/>
+                <Button x:Name="btnProducts" Content="Товары" Margin="5" Click="btnProducts_Click"/>
+            </StackPanel>
+
             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                 <Button x:Name="btnBack" Content="Назад" Margin="5" Click="btnBack_Click"/>
                 <Button x:Name="btnForward" Content="Вперед" Margin="5" Click="btnForward_Click"/>
             </StackPanel>
+
+            <TextBlock x:Name="tbTitle" Grid.Row="1" Grid.ColumnSpan="2"
+                       VerticalAlignment="Center" FontSize="30"
+                       HorizontalAlignment="Center"/>
         </Grid>
 
         <Frame x:Name="frame" Grid.Row="1"

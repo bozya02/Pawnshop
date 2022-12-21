@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Pawnshop.Pages;
 
 namespace Pawnshop
 {
@@ -23,14 +24,14 @@ namespace Pawnshop
         {
             InitializeComponent();
 
-            frame.NavigationService.Navigate(new Pages.ContractsListPage());
+            frame.NavigationService.Navigate(new ContractsListPage());
 
             frame.Navigated += Frame_Navigated;
         }
 
         private void Frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            
+            tbTitle.Text = (frame.Content as Page).Title;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,21 @@ namespace Pawnshop
         {
             if (frame.CanGoForward)
                 frame.GoForward();
+        }
+
+        private void btnContracts_Click(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new ContractsListPage());
+        }
+
+        private void btnClients_Click(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new ClientsListPage());
+        }
+
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new ProductsListPage());
         }
     }
 }
