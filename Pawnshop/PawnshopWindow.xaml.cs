@@ -22,6 +22,27 @@ namespace Pawnshop
         public PawnshopWindow()
         {
             InitializeComponent();
+
+            frame.NavigationService.Navigate(new Pages.ContractsListPage());
+
+            frame.Navigated += Frame_Navigated;
+        }
+
+        private void Frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (frame.CanGoBack)
+                frame.GoBack();
+        }
+
+        private void btnForward_Click(object sender, RoutedEventArgs e)
+        {
+            if (frame.CanGoForward)
+                frame.GoForward();
         }
     }
 }
