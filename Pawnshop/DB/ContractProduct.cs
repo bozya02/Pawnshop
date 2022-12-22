@@ -17,6 +17,7 @@ namespace Pawnshop.DB
         public int Id { get; set; }
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> ContractId { get; set; }
+        public bool IsRedeemed { get; set; }
     
         public virtual Contract Contract { get; set; }
         public virtual Product Product { get; set; }

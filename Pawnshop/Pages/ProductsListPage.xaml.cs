@@ -51,7 +51,9 @@ namespace Pawnshop.Pages
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            var searchText = tbSearch.Text.ToLower();
+
+            lvProducts.ItemsSource = Products.FindAll(c => c.Name.ToLower().Contains(searchText));
         }
     }
 }

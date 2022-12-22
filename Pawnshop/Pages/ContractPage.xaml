@@ -43,5 +43,17 @@
                 <materialDesign:PackIcon Kind="Printer" Height="30" Width="30"/>
             </Button>
         </Grid>
+
+        <DataGrid x:Name="dgProducts" Grid.Row="1" FontSize="20" ItemsSource="{Binding Products}"
+                  CanUserAddRows="True" AutoGenerateColumns="False"
+                  RowEditEnding="dgProducts_RowEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Товар" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Комиссионные" Binding="{Binding Commission}"/>
+                <DataGridCheckBoxColumn x:Name="dgcRedeemed" Header="Выкуплен" Binding="{Binding IsRedeemed}"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

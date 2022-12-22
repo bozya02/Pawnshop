@@ -23,6 +23,7 @@ namespace Pawnshop.Pages
     {
         public Contract Contract { get; set; }
         public List<Client> Clients { get; set; }
+        public List<Product> Products { get; set; }
 
         public ContractPage(Contract contract, bool isNew = false)
         {
@@ -31,13 +32,27 @@ namespace Pawnshop.Pages
             Contract = contract;
             Clients = DataAccess.GetClients();
 
+            Products = Contract.ContractProducts.Select(x => x.Product).ToList();
+
             if (isNew)
             {
                 Title = $"Новый {Title}";
                 Contract.Date = DateTime.Now;
+                dgcRedeemed.Visibility = Visibility.Collapsed;
             }
             else
+            {
                 Title = $"{Title} {Contract.ToString()}";
+                cbClient.IsEnabled = false;
+                dgProducts.CanUserAddRows = false;
+            }
+
+            if (Contract.ExpireDate < DateTime.Now)
+            {
+                cbClient.IsEnabled = false;
+                btnSave.IsEnabled = false;
+                dgProducts.IsEnabled = false;
+            }
 
             DataContext = this;
         }
@@ -48,8 +63,9 @@ namespace Pawnshop.Pages
 
             if (Contract.Client == null)
                 stringBuilder.AppendLine("Необходимо выбрать клиента!");
-            if (Contract.ContractProducts.Count == 0)
+            if (Products.Count == 0)
                 stringBuilder.AppendLine("Необходимо добавить товары!");
+
 
             if (stringBuilder.Length > 0)
             {
@@ -59,6 +75,15 @@ namespace Pawnshop.Pages
 
             try
             {
+                foreach(var product in Products)
+                {
+                    if (!Contract.ContractProducts.Any(x => x.Product.Id == product.Id))
+                        Contract.ContractProducts.Add(new ContractProduct
+                        {
+                            Contract = Contract,
+                            Product = product
+                        });
+                }
                 DataAccess.SaveContract(Contract);
             }
             catch
@@ -70,6 +95,18 @@ namespace Pawnshop.Pages
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Пока не алё");
+        }
+
+        private void dgProducts_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            if (this.dgProducts.SelectedItem != null)
+            {
+                (sender as DataGrid).RowEditEnding -= dgProducts_RowEditEnding;
+                (sender as DataGrid).CommitEdit();
+                (sender as DataGrid).Items.Refresh();
+
+                (sender as DataGrid).RowEditEnding += dgProducts_RowEditEnding;
+            }
         }
     }
 }

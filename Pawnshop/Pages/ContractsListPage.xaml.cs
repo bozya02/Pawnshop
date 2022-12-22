@@ -73,9 +73,7 @@ namespace Pawnshop.Pages
             var date = dpDate.SelectedDate;
             var client = cbClient.SelectedItem as Client;
 
-            var filteredContracts = Contracts.FindAll(c => c.Client.FirstName.ToLower().Contains(searchText) ||
-                                                           c.Client.FirstName.ToLower().Contains(searchText) ||
-                                                           c.Id.ToString().Contains(searchText));
+            var filteredContracts = Contracts.FindAll(c => c.Id.ToString().Contains(searchText));
 
             if (date != null)
                 filteredContracts = filteredContracts.FindAll(c => c.Date > date);

@@ -32,8 +32,8 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Комиссия" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="Комиссия" DisplayMemberBinding="{Binding Commission}"/>
                 </GridView>
             </ListView.View>
         </ListView>
