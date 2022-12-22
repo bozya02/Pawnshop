@@ -15,14 +15,15 @@
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
           <Property Name="Passport" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ClientId" Type="int" />
-          <Property Name="Date" Type="date" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="ContractProduct">
           <Key>
@@ -38,8 +39,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="60" />
-          <Property Name="Description" Type="nvarchar" MaxLength="300" />
-          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="IsSold" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -53,7 +53,7 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Contract_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
@@ -139,16 +139,17 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Passport" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Contracts" Relationship="PawnshopModel.FK_Contract_Client" FromRole="Client" ToRole="Contract" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="PawnshopModel.FK_Contract_Client" FromRole="Client" ToRole="Contract" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ClientId" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Client" Relationship="PawnshopModel.FK_Contract_Client" FromRole="Contract" ToRole="Client" />
           <NavigationProperty Name="ContractProducts" Relationship="PawnshopModel.FK_ContractProduct_Contract" FromRole="Contract" ToRole="ContractProduct" />
         </EntityType>
@@ -168,10 +169,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="ContractProducts" Relationship="PawnshopModel.FK_ContractProduct_Product" FromRole="Product" ToRole="ContractProduct" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="IsSold" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ContractProducts" Relationship="PawnshopModel.FK_ContractProduct_Product" FromRole="Product" ToRole="ContractProduct" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -184,7 +184,7 @@
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Contract_Client">
-          <End Type="PawnshopModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="PawnshopModel.Client" Role="Client" Multiplicity="1" />
           <End Type="PawnshopModel.Contract" Role="Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
@@ -219,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -228,6 +228,7 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="PawnshopModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Passport" ColumnName="Passport" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
@@ -260,7 +261,6 @@
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="IsSold" ColumnName="IsSold" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -19,6 +19,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
@@ -27,15 +28,42 @@
                      materialDesign:HintAssist.Hint="Поиск"
                      TextChanged="tbSearch_TextChanged"/>
 
+            <DatePicker x:Name="dpDate" Grid.Column="1"
+                        Margin="10" Padding="5" FontSize="20"
+                        materialDesign:HintAssist.Hint="Дата"
+                        SelectedDateChanged="dpDate_SelectedDateChanged"/>
+
+            <ComboBox x:Name="cbClient" ItemsSource="{Binding Clients}"
+                      Margin="10" Padding="5" FontSize="20"
+                      Grid.Column="2" SelectedIndex="0"
+                      materialDesign:HintAssist.Hint="Клиент"
+                      SelectionChanged="cbClient_SelectionChanged"/>
+
             <Button x:Name="btnNewContract" Content="Добавить"
-                    Grid.Column="2" FontSize="20" MinHeight="40"
+                    Grid.Column="4" FontSize="20" MinHeight="40"
                     Click="btnNewContract_Click"/>
         </Grid>
 
         <ListView x:Name="lvContracts" ItemsSource="{Binding Contracts}" Grid.Row="1" SelectionChanged="lvContracts_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    
+                    <GridViewColumn Header="№" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Клиент" DisplayMemberBinding="{Binding Client}"/>
+                    <GridViewColumn Header="Товары">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ListView ItemsSource="{Binding ContractProducts}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Product}"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Дата заключения" DisplayMemberBinding="{Binding Date, StringFormat=d, ConverterCulture=ru}"/>
+                    <GridViewColumn Header="Дата истечения" DisplayMemberBinding="{Binding ExpireDate, StringFormat=d, ConverterCulture=ru}"/>
                 </GridView>
             </ListView.View>
         </ListView>

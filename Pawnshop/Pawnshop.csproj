@@ -81,9 +81,11 @@
     <Compile Include="DB\Client.cs">
       <DependentUpon>PawnshopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\ClientPartial.cs" />
     <Compile Include="DB\Contract.cs">
       <DependentUpon>PawnshopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\ContractPartial.cs" />
     <Compile Include="DB\ContractProduct.cs">
       <DependentUpon>PawnshopModel.tt</DependentUpon>
     </Compile>
@@ -107,6 +109,7 @@
     <Compile Include="DB\Product.cs">
       <DependentUpon>PawnshopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\ProductPartial.cs" />
     <Compile Include="DB\sysdiagram.cs">
       <DependentUpon>PawnshopModel.tt</DependentUpon>
     </Compile>

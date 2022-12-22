@@ -25,9 +25,11 @@
                  materialDesign:HintAssist.Hint="Имя"/>
         <TextBox Text="{Binding Patronymic}" Grid.Row="2"
                  materialDesign:HintAssist.Hint="Отчество"/>
-        <TextBox Text="{Binding Passport}" Grid.Row="3"
+        <TextBox Text="{Binding Passport}" Grid.Row="3" MaxLength="10"
+                 PreviewTextInput="IsNumberInput"
                  materialDesign:HintAssist.Hint="Паспорт"/>
-        <TextBox Text="{Binding Phone}" Grid.Row="4"
+        <TextBox Text="{Binding Phone}" Grid.Row="4" MaxLength="11"
+                 PreviewTextInput="IsNumberInput"
                  materialDesign:HintAssist.Hint="Телефон"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">

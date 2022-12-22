@@ -42,7 +42,8 @@ namespace Pawnshop.Pages
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            var searchText = tbSearch.Text.ToLower();
+            lvClients.ItemsSource = Clients.FindAll(c => c.LastName.ToLower().Contains(searchText) || c.FirstName.ToLower().Contains(searchText));
         }
 
         private void btnNewClient_Click(object sender, RoutedEventArgs e)

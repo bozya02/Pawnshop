@@ -38,7 +38,7 @@
                     <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                     <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}"/>
-                    <GridViewColumn Header="Паспорт" DisplayMemberBinding="{Binding Passport}"/>
+                    <GridViewColumn Header="Телефон" DisplayMemberBinding="{Binding Phone}"/>
                 </GridView>
             </ListView.View>
         </ListView>

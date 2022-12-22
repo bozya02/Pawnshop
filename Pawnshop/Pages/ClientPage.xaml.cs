@@ -30,7 +30,10 @@ namespace Pawnshop.Pages
             Client = client;
 
             if (isNew)
+            {
                 Title = $"Новый {Title}";
+                btnDelete.Visibility = Visibility.Collapsed;
+            }
             else
                 Title = $"{Title} {Client.ToString()}";
 
@@ -78,6 +81,11 @@ namespace Pawnshop.Pages
             {
                 MessageBox.Show("Что-то пошло не так!");
             }
+        }
+
+        public void IsNumberInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !int.TryParse(e.Text, out _);
         }
     }
 }

@@ -10,6 +10,38 @@
       Title="Договор">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <DatePicker SelectedDate="{Binding Contract.Date}"
+                        materialDesign:HintAssist.Hint="Дата"
+                        Margin="10" Padding="5" FontSize="20"
+                        IsEnabled="False"/>
+
+            <ComboBox x:Name="cbClient" ItemsSource="{Binding Clients}"
+                      Margin="10" Padding="5" FontSize="20" Grid.Column="1"
+                      materialDesign:HintAssist.Hint="Клиент"
+                      SelectedItem="{Binding Contract.Client}"/>
+
+            <Button x:Name="btnSave" Content="Сохранить"
+                    Grid.Column="2" FontSize="20" MinHeight="40"
+                    Click="btnSave_Click"/>
+
+            <Button x:Name="btnPrint"
+                    Grid.Column="3" FontSize="20" MinHeight="40"
+                    Click="btnPrint_Click">
+                <materialDesign:PackIcon Kind="Printer" Height="30" Width="30"/>
+            </Button>
+        </Grid>
     </Grid>
 </Page>
