@@ -12,7 +12,8 @@ namespace Pawnshop.DB
         public static event NewItemAdded NewItemAddedEvent;
 
         public static List<Client> GetClients() => PawnshopEntities.GetContext().Clients.ToList();
-        public static List<Product> GetProducts() => PawnshopEntities.GetContext().Products.ToList();
+        public static List<Product> GetProducts() => PawnshopEntities.GetContext().Products.ToList().FindAll(x => !x.IsRedeemed & !x.IsSold);
+        public static List<Product> GetAllProducts() => PawnshopEntities.GetContext().Products.ToList();
         public static List<Contract> GetContracts() => PawnshopEntities.GetContext().Contracts.ToList();
 
         public static void SaveClient(Client client)

@@ -76,6 +76,7 @@ namespace Pawnshop.Pages
             try
             {
                 DataAccess.SaveClient(Client);
+                NavigationService.GoBack();
             }
             catch
             {

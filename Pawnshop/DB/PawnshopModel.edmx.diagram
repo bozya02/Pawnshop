@@ -5,14 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2d418ade9911442ebca7acba8d72d899" Name="Diagram1">
-        <EntityTypeShape EntityType="PawnshopModel.Client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PawnshopModel.Contract" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PawnshopModel.ContractProduct" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PawnshopModel.Product" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PawnshopModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="PawnshopModel.FK_Contract_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="PawnshopModel.FK_ContractProduct_Contract" ManuallyRouted="false" />
-        <AssociationConnector Association="PawnshopModel.FK_ContractProduct_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PawnshopModel.Client" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="PawnshopModel.Contract" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="PawnshopModel.Product" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="PawnshopModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="PawnshopModel.FK_Contract_Client" />
+        <AssociationConnector Association="PawnshopModel.FK_Product_Contract" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

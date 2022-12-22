@@ -14,7 +14,5 @@ namespace Pawnshop.DB
         }
 
         public double Commission => (double)Price * 0.2;
-
-        public Contract Contract => ContractProducts.FirstOrDefault().Contract;
     }
 }

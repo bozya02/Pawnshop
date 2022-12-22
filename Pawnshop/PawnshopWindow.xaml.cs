@@ -60,5 +60,10 @@ namespace Pawnshop
         {
             frame.NavigationService.Navigate(new ProductsListPage());
         }
+
+        private void btnStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new StatisticsPage());
+        }
     }
 }

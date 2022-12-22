@@ -32,7 +32,7 @@ namespace Pawnshop.Pages
             Contract = contract;
             Clients = DataAccess.GetClients();
 
-            Products = Contract.ContractProducts.Select(x => x.Product).ToList();
+            Products = Contract.Products.ToList();
 
             if (isNew)
             {
@@ -77,14 +77,14 @@ namespace Pawnshop.Pages
             {
                 foreach(var product in Products)
                 {
-                    if (!Contract.ContractProducts.Any(x => x.Product.Id == product.Id))
-                        Contract.ContractProducts.Add(new ContractProduct
-                        {
-                            Contract = Contract,
-                            Product = product
-                        });
+                    if (!Contract.Products.Any(x => x.Id == product.Id))
+                        Contract.Products.Add(product);
+
+                    if (product.IsRedeemed)
+                        product.RedeemedDate = DateTime.Now;
                 }
                 DataAccess.SaveContract(Contract);
+                NavigationService.GoBack();
             }
             catch
             {

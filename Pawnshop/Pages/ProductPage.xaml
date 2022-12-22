@@ -10,6 +10,27 @@
       Title="Товар">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox Text="{Binding Name}"
+                 materialDesign:HintAssist.Hint="Название"/>
+
+        <TextBox Text="{Binding Price}" Grid.Row="1"
+                 materialDesign:HintAssist.Hint="Цена"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
+            <Button x:Name="btnSave" Content="Сохранить" Margin="10"
+                    MinWidth="200" MinHeight="60" FontSize="30"
+                    Click="btnSave_Click"/>
+
+            <Button x:Name="btnSell" Content="Продать"
+                    MinWidth="200" MinHeight="60" Margin="10"
+                    FontSize="30" Style="{StaticResource btnSecondary}"
+                    Click="btnSell_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

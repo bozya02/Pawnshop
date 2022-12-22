@@ -76,6 +76,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Pages\StatisticsPage.xaml.cs">
+      <DependentUpon>StatisticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Finances.cs" />
+    <Compile Include="Services\Statistic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\Client.cs">
@@ -86,9 +91,6 @@
       <DependentUpon>PawnshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\ContractPartial.cs" />
-    <Compile Include="DB\ContractProduct.cs">
-      <DependentUpon>PawnshopModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DB\DataAccess.cs" />
     <Compile Include="DB\PawnshopEntities.cs" />
     <Compile Include="DB\PawnshopModel.Context.cs">
@@ -189,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProductsListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

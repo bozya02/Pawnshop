@@ -27,7 +27,6 @@ namespace Pawnshop.DB
     
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
-        public virtual DbSet<ContractProduct> ContractProducts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }

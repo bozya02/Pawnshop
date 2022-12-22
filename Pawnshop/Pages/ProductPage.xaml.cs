@@ -23,18 +23,61 @@ namespace Pawnshop.Pages
     {
         public Product Product { get; set; }
 
-        public ProductPage(Product product, bool isNew = false)
+        public ProductPage(Product product)
         {
             InitializeComponent();
 
             Product = product;
+            Title = $"{Title} {Product.ToString()}";
 
-            if (isNew)
-                Title = $"Новый {Title}";
-            else
-                Title = $"{Title} {Product.ToString()}";
+            if (Product.Contract.ExpireDate > DateTime.Now)
+            {
+                IsEnabled = false;
+            }
 
-            DataContext = this;
+            DataContext = Product;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(Product.Name))
+                stringBuilder.AppendLine("Введено некорректное название!");
+            if (Product.Price <= 0)
+                stringBuilder.AppendLine("Укажите корректную цену!");
+
+
+            if (stringBuilder.Length > 0)
+            {
+                MessageBox.Show(stringBuilder.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            try
+            {
+                DataAccess.SaveProduct(Product);
+                NavigationService.GoBack();
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так!");
+            }
+        }
+
+        private void btnSell_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Product.IsSold = true;
+                Product.SoldDate = DateTime.Now;
+                DataAccess.SaveProduct(Product);
+                NavigationService.GoBack();
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так!");
+            }
         }
     }
 }

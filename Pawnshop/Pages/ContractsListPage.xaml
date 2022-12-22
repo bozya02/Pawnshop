@@ -52,13 +52,7 @@
                     <GridViewColumn Header="Товары">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ListView ItemsSource="{Binding ContractProducts}">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Product}"/>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                <ListView ItemsSource="{Binding Products}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -29,6 +29,7 @@
                 <Button x:Name="btnContracts" Content="Договоры" Margin="5" Click="btnContracts_Click"/>
                 <Button x:Name="btnClients" Content="Клиенты" Margin="5" Click="btnClients_Click"/>
                 <Button x:Name="btnProducts" Content="Товары" Margin="5" Click="btnProducts_Click"/>
+                <Button x:Name="btnStatistics" Content="Статистика" Margin="5" Click="btnStatistics_Click"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
