@@ -94,7 +94,7 @@ namespace Pawnshop.Pages
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Пока не алё");
+            Services.FileGenerator.Generate(Contract);
         }
 
         private void dgProducts_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
