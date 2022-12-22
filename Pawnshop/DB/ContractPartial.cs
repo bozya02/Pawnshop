@@ -10,7 +10,7 @@ namespace Pawnshop.DB
     {
         public override string ToString()
         {
-            return $"№{Id} от {Date.ToShortDateString()}";
+            return $"№{Id} от {Date.ToString("dd.MM.yyyy")}";
         }
 
         public DateTime ExpireDate => Date.AddDays(30);
