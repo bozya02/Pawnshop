@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Pawnshop.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Статистика">
@@ -26,6 +27,19 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <DatePicker x:Name="dpStart" Language="ru"
+                        materialDesign:HintAssist.Hint="Начало периода"
+                        Margin="10" Padding="5" FontSize="24"/>
+            <DatePicker x:Name="dpEnd" Language="ru"
+                        materialDesign:HintAssist.Hint="Конец периода"
+                        Margin="10" Padding="5" FontSize="24"/>
+
+            <Button x:Name="btnGetStatistica" Content="Сформировать"
+                    Grid.Column="2" FontSize="20" MinHeight="40"
+                    Click="btnGetStatistica_Click"/>
+        </StackPanel>
 
         <TextBlock Text="Доход"/>
         <TextBlock Text="{Binding Income}"

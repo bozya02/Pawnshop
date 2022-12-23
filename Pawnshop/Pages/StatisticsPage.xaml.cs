@@ -29,8 +29,27 @@ namespace Pawnshop.Pages
             InitializeComponent();
 
             Products = DataAccess.GetAllProducts();
+        }
 
-            Statistic statistic = Finances.GetStatistic(Products, DateTime.Now.AddDays(-100), DateTime.Now);
+        private void btnGetStatistica_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            var start = dpStart.SelectedDate;
+            var end = dpEnd.SelectedDate;
+
+            if (start == null)
+                stringBuilder.AppendLine("Дата начала периода не выбрана!");
+            if (end == null)
+                stringBuilder.AppendLine("Дата конца периода не выбрана!");
+
+            if (stringBuilder.Length > 0)
+            {
+                MessageBox.Show(stringBuilder.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            Statistic statistic = Finances.GetStatistic(Products, (DateTime)start, (DateTime)end);
 
             DataContext = statistic;
         }
