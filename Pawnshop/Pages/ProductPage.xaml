@@ -16,13 +16,26 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
         <TextBox Text="{Binding Name}"
                  materialDesign:HintAssist.Hint="Название"/>
 
         <TextBox Text="{Binding Price}" Grid.Row="1"
                  materialDesign:HintAssist.Hint="Цена"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
+        <CheckBox Content="Выкуплен" IsChecked="{Binding IsRedeemed}"
+                  Grid.Column="1" FontSize="30"
+                  Height="50" IsEnabled="False"/>
+        <CheckBox Content="Продан" IsChecked="{Binding IsSold}"
+                  Grid.Column="1" Grid.Row="1"
+                  FontSize="30" IsEnabled="False"
+                  Height="50"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center" Grid.ColumnSpan="2">
             <Button x:Name="btnSave" Content="Сохранить" Margin="10"
                     MinWidth="200" MinHeight="60" FontSize="30"
                     Click="btnSave_Click"/>

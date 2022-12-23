@@ -84,6 +84,8 @@ namespace Pawnshop.Pages
                         product.RedeemedDate = DateTime.Now;
                 }
                 DataAccess.SaveContract(Contract);
+
+                MessageBox.Show("Договор успешно сохранен!", "Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 NavigationService.GoBack();
             }
             catch

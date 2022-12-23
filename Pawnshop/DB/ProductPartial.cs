@@ -13,6 +13,10 @@ namespace Pawnshop.DB
             return Name;
         }
 
-        public double Commission => (double)Price * 0.2;
+        public double Commission
+        {
+            get => (double)Price * 0.2;
+            set { }
+        }
     }
 }

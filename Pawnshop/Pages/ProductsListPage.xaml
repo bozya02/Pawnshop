@@ -26,6 +26,8 @@
                      FontSize="20"
                      materialDesign:HintAssist.Hint="Поиск"
                      TextChanged="tbSearch_TextChanged"/>
+
+            <CheckBox x:Name="cbShowAll" Content="Показать все" IsChecked="False" Grid.Column="1" Click="cbShowAll_Click"/>
         </Grid>
 
         <ListView x:Name="lvProducts" ItemsSource="{Binding Products}" Grid.Row="1" SelectionChanged="lvProducts_SelectionChanged">

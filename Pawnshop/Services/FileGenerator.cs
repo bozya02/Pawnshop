@@ -53,7 +53,7 @@ namespace Pawnshop.Services
             body.ChildObjects.Remove(paragraph);
             body.ChildObjects.Insert(index, table);
 
-            doc.SaveToFile(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $@"\Договор №{contract.Id}.docx", FileFormat.Docx);
+            doc.SaveToFile(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $@"\Договоры\Договор №{contract.Id}.docx", FileFormat.Docx);
         }
     }
 }

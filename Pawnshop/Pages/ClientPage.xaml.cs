@@ -76,6 +76,7 @@ namespace Pawnshop.Pages
             try
             {
                 DataAccess.SaveClient(Client);
+                MessageBox.Show("Клиент успешно сохранен!", "Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 NavigationService.GoBack();
             }
             catch

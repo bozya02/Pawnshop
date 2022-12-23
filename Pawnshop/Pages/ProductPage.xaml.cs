@@ -34,6 +34,10 @@ namespace Pawnshop.Pages
             {
                 IsEnabled = false;
             }
+            if (Product.IsSold || Product.IsRedeemed)
+            {
+                IsEnabled = false;
+            }
 
             DataContext = Product;
         }

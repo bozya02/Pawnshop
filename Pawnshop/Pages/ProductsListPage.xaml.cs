@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Pawnshop.DB;
+using Spire.Doc.Documents;
 
 namespace Pawnshop.Pages
 {
@@ -51,9 +52,25 @@ namespace Pawnshop.Pages
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var searchText = tbSearch.Text.ToLower();
+            ApplyFilters();
+            
+        }
 
-            lvProducts.ItemsSource = Products.FindAll(c => c.Name.ToLower().Contains(searchText));
+        private void cbShowAll_Click(object sender, RoutedEventArgs e)
+        {
+            ApplyFilters();
+        }
+
+        public void ApplyFilters()
+        {
+            var searchText = tbSearch.Text.ToLower();
+            var isAll = (bool)cbShowAll.IsChecked;
+
+            var products = isAll ? DataAccess.GetAllProducts() : DataAccess.GetProducts();
+
+            products = products.FindAll(c => c.Name.ToLower().Contains(searchText));
+
+            lvProducts.ItemsSource = products;
         }
     }
 }
